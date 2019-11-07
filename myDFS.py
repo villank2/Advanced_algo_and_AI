@@ -1,15 +1,14 @@
-from queue import Queue
 
 def myDfs(start,goal):
-    visited = []
-    q = Queue()
-    q.put(start)
-    while not q.empty():
-        v = q.get()
-        visited.append(v)
+    # use a stack or just pop from the start of the list
+    open = [start]
+    close = []
+    while  len(open) > 0:
+        v = open.pop(0)
+        close.append(v)
         if v == goal:
-            return #success
+            return #succeeded
         for child in v.children():
-            if not child in visited:
-                q.put(child)
-    return None #goal is non existent
+            if not v in close:
+                child.append(child)
+                
