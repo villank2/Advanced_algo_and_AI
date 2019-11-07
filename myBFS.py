@@ -2,13 +2,13 @@ import queue
 
 def myBfs(start,goal):
     q = queue.Queue()
-    q.enqeue(start) 
+    q.put(start) 
     close = []
     while not(q.empty()):
-        v = q.dequeue()
+        v = q.get()
         close.append(v) #keep track of visited nodes
         if v == goal:
             return #succeeded
         for child in v.children():
             if not child in close:
-                q.enqeue(child)
+                q.put(child)
